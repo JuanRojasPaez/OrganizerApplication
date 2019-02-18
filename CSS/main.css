@@ -1,0 +1,58 @@
+input[type=text], textarea  {
+  border-radius: 10px;
+  resize: none;
+  -webkit-appearance: none;
+  font-size: 13px;
+}
+
+.required{
+	color:red;
+}
+#tCreator{
+  display: none;
+  margin-top: 10px;
+    margin-right: 50%;
+}
+
+.newTask{
+  padding:10px;
+  background-color: #A7CAD7;
+  border-radius: 10px;
+  padding: 7px 25px 10px 25px;
+  color:white;
+  font-size: 15px;
+  font-weight: 500;
+
+}
+input[type=submit]{
+  padding:10px;
+  background-color: #04D15F;
+  border-radius: 10px;
+  padding: 7px 25px 10px 25px;
+  color:white;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0px 1px 0px  #DBDBDB
+              ,0 1px 2px #DBDBDB;
+  transition: all 0.2s ease-out;
+}
+
+input[type=reset]{
+  background-color: #E65A71 ;
+  border-radius: 10px;
+  padding: 7px 25px 10px 25px;
+  color:white;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0px 1px 0px  #DBDBDB
+              ,0 1px 2px #DBDBDB;
+  transition: all 0.2s ease-out;
+}
+input[type=reset]:hover{
+  box-shadow: 0px 1px 8px  #8a8f91
+              ,0 2px 2px #8a8f91;
+}
+input[type=submit]:hover{
+  box-shadow: 0px 1px 8px  #8a8f91
+              ,0 2px 2px #8a8f91;
+}

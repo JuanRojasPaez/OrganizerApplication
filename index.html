@@ -13,22 +13,34 @@
   <body>
 
 
-    <form name="taskCreator">
-      <label for="tName">Task Name:</label>
-        <input type="text" name="taskName" id="tName" placeholder="--Title--" value="Juan"required>
+    <button class="newTask"onclick="displayTaskCreator()">NEW TASK</button>
+    
+    <form name="taskCreator" id="tCreator">
+      <fieldset>
+        <legend>CREATE A NEW TASK:</legend>
+
+        <label for="tName">Task Name <span class="required">*</span></label>
+        <input type="text" name="taskName" id="tName" placeholder="--Title--"  required>
         <br>
-      <label for="tDesc">Task Name:</label><br>
-        <textarea rows="4" cols="50" maxlength="150" name="taskDesc" id="tDesc"placeholder="--Description--" required></textarea>
+
+        <label for="tDesc">Task Description <span class="required">*</span></label><br>
+        <textarea type="textarea"rows="4" cols="50" maxlength="150" name="taskDesc" id="tDesc" placeholder="--Description--" required></textarea>
         <br>
-    <label for="tLocation">Location:</label><br>
+
+        <label for="tLocation">Location <span class="required">*</span></label><br>
         <input type="text" name="taskLocation" id="tLocation" placeholder="--Location--" required>
         <br>
-      <label for="tLocation">All Day Event:</label> <input type="checkbox" name="taskLocation" id="tLocation">
+
+        <label for="tAllDay">All Day Event:</label> <input type="checkbox" name="taskLocation" id="tAllDay">
         <br>
-      Starting Date:<input type="date" name="taskStartDate" required>  Starting Time:  <input type="time" name="taskStartTime" required><br>
-      Ending Date:  <input type="date" name="taskeEndDate" required>    Ending Time:    <input type="time" name="taskEndTime" required><br>
+
+        <label for="tStartDate">Starting Date <span class="required">*</span></label><input type="date" name="taskStartDate" id="tStartDate" required> <label for="tStartTime">Starting Time <span class="required">*</span></label> <input type="time" name="taskStartTime" id="tStartTime" required><br>
+
+        <label for="tEndDate">Ending Time <span class="required">*</span></label><input type="date" name="taskeEndDate" id="tEndDate" required>        <label for="tEndTime">End Time <span class="required">*</span></label>     <input type="time" name="taskEndTime" id="tEndTime" required><br>
+        <br>
       <input type="submit" value="Submit my task">
       <input type="reset">
+    </fieldset>
     </form>
 
 
