@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="css/reset.css"> -->
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+
+    <form name="taskCreator">
+      <label for="tName">Task Name:</label>
+        <input type="text" name="taskName" id="tName" placeholder="--Title--" value="Juan"required>
+        <br>
+      <label for="tDesc">Task Name:</label><br>
+        <textarea rows="4" cols="50" maxlength="150" name="taskDesc" id="tDesc"placeholder="--Description--" required></textarea>
+        <br>
+    <label for="tLocation">Location:</label><br>
+        <input type="text" name="taskLocation" id="tLocation" placeholder="--Location--" required>
+        <br>
+      <label for="tLocation">All Day Event:</label> <input type="checkbox" name="taskLocation" id="tLocation">
+        <br>
+      Starting Date:<input type="date" name="taskStartDate" required>  Starting Time:  <input type="time" name="taskStartTime" required><br>
+      Ending Date:  <input type="date" name="taskeEndDate" required>    Ending Time:    <input type="time" name="taskEndTime" required><br>
+      <input type="submit" value="Submit my task">
+      <input type="reset">
+    </form>
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
