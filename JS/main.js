@@ -6,3 +6,11 @@ function displayTaskCreator() {
     x.style.display = "block";
   }
 }
+
+function createNewChild() {
+  var  fname = document.getElementById("cfName").value;
+  var  lname = document.getElementById("clName").value;
+  this.firstName = fname;
+  this.lastName = lname;
+    alert(this.firstName + " " + this.lastName);
+}
