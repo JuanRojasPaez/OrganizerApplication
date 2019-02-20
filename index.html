@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="css/reset.css"> -->
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <div>
+    <button class="addChild" onclick="">ADD A CHILD</button>
+    <form>
+      <label for="childFName">First Name<span class="required">*</span></label><br>
+      <input type="text" name="childFName" id="cfName" placeholder="--First Name--"  required>
+      <br>
+      <label for="childLName">Last Name<span class="required">*</span></label><br>
+      <input type="text" name="childLName" id="clName" placeholder="--Last Name--"  required>
+      <br>
+      <input type="submit" value="Submit my task" onclick="createNewChild()"><input type="reset">
+    </form>
+  </div>
+
+    <button class="newTask"onclick="displayTaskCreator()">NEW TASK</button>
+    <div class="formDisplay">
+      <form name="taskCreator" id="tCreator">
+        <fieldset>
+
+          <label for="tName">Task Name <span class="required">*</span></label><br>
+          <input type="text" name="taskName" id="tName" placeholder="--Title--"  required>
+          <br>
+
+          <label for="tDesc">Task Description <span class="required">*</span></label><br>
+          <textarea type="textarea"rows="4" cols="50" maxlength="150" name="taskDesc" id="tDesc" placeholder="--Description--" required></textarea>
+          <br>
+
+          <label for="tLocation">Location <span class="required">*</span></label><br>
+          <input type="text" name="taskLocation" id="tLocation" placeholder="--Location--" required>
+          <br>
+
+          <label for="tAllDay">All Day Event:</label>
+          <input type="checkbox" name="taskLocation" id="tAllDay">
+          <br>
+
+          <label for="tStartDate">Starting Date <span class="required">*</span></label><br>
+          <input type="date" name="taskStartDate" id="tStartDate" required>
+          <br>
+
+          <label for="tStartTime">Starting Time <span class="required">*</span></label><br>
+          <input type="time" name="taskStartTime" id="tStartTime" required>
+          <br>
+
+          <label for="tEndDate">Ending Time <span class="required">*</span></label><br>
+          <input type="date" name="taskeEndDate" id="tEndDate" required>
+          <br>
+
+          <label for="tEndTime">End Time <span class="required">*</span></label><br>
+          <input type="time" name="taskEndTime" id="tEndTime" required>
+          <br><br>
+        <input type="submit" value="Submit my task"><input type="reset">
+      </fieldset>
+      </form>
+    </div>
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+input{
+  width:368px;
+}
+
+fieldset{
+      background-color: #0893F0;
+      border:none;
+}
+#tCreator  label{
+  color:white;
+}
+#tAllDay{
+  margin-bottom:10px;
+  width: 0px;
+}
+.addChild{
+  padding:10px;
+  background-color: #4EC4B9;
+  border-radius: 10px;
+  padding: 7px 25px 10px 25px;
+  color:white;
+  font-size: 15px;
+  font-weight: 500;
+
+}
+
+body{
+  font-family:sans-serif;
+}
+
+input[type=text],input[type=date],input[type=time], textarea  {
+  border-radius: 6px;
+  resize: none;
+  -webkit-appearance: none;
+  font-size: 13px;
+      margin-bottom: 10px;
+}
+
+.required{
+	color:red;
+}
+#tCreator{
+  display: none;
+  margin-top: 10px;
+    margin-right: 50%;
+}
+
+.newTask{
+  padding:10px;
+  background-color: #3759B5;
+  border-radius: 10px;
+  padding: 7px 25px 10px 25px;
+  color:white;
+  font-size: 15px;
+  font-weight: 500;
+}
+input[type=submit]{
+  padding:10px;
+  background-color: #04D15F;
+  border-radius: 10px;
+  border-width: 0px;
+  border: none;
+  padding: 7px 25px 10px 25px;
+  color:white;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0px 2px 3px  #8a8f91
+              ,0 2px 2px #8a8f91;
+  transition: all 0.1s ease;
+  margin-right: 10px;
+  width:200px;
+}
+
+input[type=reset]{
+  background-color: #E65A71 ;
+  border-radius: 10px;
+  border-width: 0px;
+    border: none;
+  padding: 7px 25px 10px 25px;
+  color:white;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0px 2px 3px  #8a8f91
+              ,0 2px 2px #8a8f91;
+  transition: all 0.1s ease-out;
+  width:200px;
+  margin-right: 10px;
+  width: 126px;
+}
+
+input[type=submit]:active, input[type=reset]:active, .newTask:active
+{
+	box-shadow: 0 1px 0 #666;
+    transition: all 0.1s ease-out;
+	-webkit-transform: translateY(2px);
+	transform: translateY(2px);
+}
