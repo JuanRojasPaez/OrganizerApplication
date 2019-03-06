@@ -12,33 +12,34 @@
   </head>
   <body>
 
-    <div>
-    <button class="addChild" onclick="">ADD a child </button>
-    <form>
-      <label for="childFName">First Name<span class="required">*</span></label><br>
-      <input type="text" name="childFName" id="cfName" placeholder="--First Name--"  required>
-      <br>
-      <label for="childLName">Last Name<span class="required">*</span></label><br>
-      <input type="text" name="childLName" id="clName" placeholder="--Last Name--"  required>
-      <br>
-      <input type="submit" value="Submit my task" onclick="createNewChild()"><input type="reset">
-    </form>
-  </div>
+    <button class="addChild" onclick="displayChildCreator()">Add a new child </button>
+    <div style="margin-bottom:10px;">
+      <form name="childCreator" id="cCreator">
+        <fieldset>
+        <label for="childFName">First Name:<span class="required">*</span></label><br>
+        <input type="text" name="childFName" id="cfName" placeholder="--First Name--"required>
+        <br>
+        <label for="childLName">Last Name:<span class="required">*</span></label><br>
+        <input type="text" name="childLName" id="clName" placeholder="--Last Name--" required>
+        <br><br>
+        <input type="submit" value="Add Child" onclick="createNewChild()"><input type="reset">
+      </fieldset>
+      </form>
+    </div>
 
-    <button class="newTask" onclick="displayTaskCreator()">NEW TASK</button>
+    <button class="newTask" onclick="displayTaskCreator()">Create a new task</button>
     <div class="formDisplay">
       <form name="taskCreator" id="tCreator">
         <fieldset>
-
-          <label for="tName">Task Name <span class="required">*</span></label><br>
+          <label for="tName">Task Name:<span class="required">*</span></label><br>
           <input type="text" name="taskName" id="tName" placeholder="--Title--"  required>
           <br>
 
-          <label for="tDesc">Task Description <span class="required">*</span></label><br>
+          <label for="tDesc">Task Description: <span class="required">*</span></label><br>
           <textarea type="textarea"rows="4" cols="50" maxlength="150" name="taskDesc" id="tDesc" placeholder="--Description--" required></textarea>
           <br>
 
-          <label for="tLocation">Location <span class="required">*</span></label><br>
+          <label for="tLocation">Location: <span class="required">*</span></label><br>
           <input type="text" name="taskLocation" id="tLocation" placeholder="--Location--" required>
           <br>
 
@@ -46,19 +47,19 @@
           <input type="checkbox" name="taskLocation" id="tAllDay">
           <br>
 
-          <label for="tStartDate">Starting Date <span class="required">*</span></label><br>
+          <label for="tStartDate">Starting Date: <span class="required">*</span></label><br>
           <input type="date" name="taskStartDate" id="tStartDate" required>
           <br>
 
-          <label for="tStartTime">Starting Time <span class="required">*</span></label><br>
-          <input type="time" name="taskStartTime" id="tStartTime" required>
-          <br>
-
-          <label for="tEndDate">Ending Time <span class="required">*</span></label><br>
+          <label for="tEndDate">Ending Date: <span class="required">*</span></label><br>
           <input type="date" name="taskeEndDate" id="tEndDate" required>
           <br>
 
-          <label for="tEndTime">End Time <span class="required">*</span></label><br>
+          <label for="tStartTime">Start Time: <span class="required">*</span></label><br>
+          <input type="time" name="taskStartTime" id="tStartTime" required>
+          <br>
+
+          <label for="tEndTime">End Time: <span class="required">*</span></label><br>
           <input type="time" name="taskEndTime" id="tEndTime" required>
           <br><br>
         <input type="submit" value="Submit my task"><input type="reset">

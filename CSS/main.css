@@ -3,7 +3,7 @@ input{
 }
 
 fieldset{
-      background-color: #0893F0;
+      background-color: #343a3e;
       border:none;
 }
 #tCreator  label{
@@ -39,12 +39,20 @@ input[type=text],input[type=date],input[type=time], textarea  {
 .required{
 	color:red;
 }
+
+#cCreator label {
+  color:white;
+}
 #tCreator{
   display: none;
   margin-top: 10px;
     margin-right: 50%;
 }
-
+#cCreator{
+  display: none;
+  margin-top: 10px;
+    margin-right: 50%;
+}
 .newTask{
   padding:10px;
   background-color: #3759B5;

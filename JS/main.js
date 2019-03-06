@@ -127,6 +127,15 @@ function displayTaskCreator() {
     x.style.display = "block";
   }
 }
+
+function displayChildCreator(){
+  var x = document.getElementById("cCreator");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
 function createNewChild() {
   var  fname = document.getElementById("cfName").value;
   var  lname = document.getElementById("clName").value;
@@ -135,5 +144,7 @@ function createNewChild() {
     alert(this.firstName + " " + this.lastName);
 }
 
-var newTask1 = new Task3();
-console.log(newTask1.getCreatedDate() + "\n" + newTask1.getStartDate() + "\n" + newTask1.getEndDate() );
+var newTask3 = new Task3();
+console.log(newTask3.taskID + "\n" + newTask3.getStartDate() + "\n" + newTask3.getEndDate() );
+
+//Make array of objects
