@@ -28,6 +28,7 @@ function Task1(){
 
   this.childAttendingName = "Max";
 }
+
 Task1.prototype.getStartDate = function(){
   return (this.startMonth + " " + this.startDay + " " + this.startYear);
 }
