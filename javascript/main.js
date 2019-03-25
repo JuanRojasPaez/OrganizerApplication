@@ -152,4 +152,35 @@ function createNewChild() {
 var newTask3 = new Task3();
 console.log(newTask3.taskID + "\n" + newTask3.getStartDate() + "\n" + newTask3.getEndDate() );
 
-//Make array of objects
+
+getFirstDayOfMonth(2019,04);
+function getFirstDayOfMonth(year, month){
+    var date = new Date(year, month, 1);
+    var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+    return days[date.getDay()];
+}
+function getTodayMonth(){
+  var i = new Date();
+  return i.getDate();
+}
+function getMonthText(){
+  var i = new Date();
+  var months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  return months[i.getMonth()];
+}
+function getAlphaDay(){
+  var day = new Date();
+  var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  return days[day.getDay()];
+}
+function getCurrentYear(){
+  var year = new Date();
+  return year.getFullYear();
+}
+var dOfWeek = document.getElementById("dayOfWeek");
+var dOfMonth = document.getElementById("numberOfMonth");
+//var month = document.getElementById("monthText");
+dOfWeek.innerHTML = getAlphaDay() ;
+dOfMonth.style.fontWeight = 'bold';
+//month.innerHTML = getMonthText()
+dOfMonth.innerHTML = "<b>" + getMonthText() + "</b>"  + " " + getTodayMonth() + " " + getCurrentYear();
