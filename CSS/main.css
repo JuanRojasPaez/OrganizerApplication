@@ -35,7 +35,13 @@ fieldset{
   background-color: #5F95FF;
   color:white;
 }
+.tasksStyling{
+  background-color: #F2F2F2;
+}
 
+.openSpaceTasks{
+  padding-bottom: 25%;
+}
 .numberTodayDay{
   font-size: 50px;
 }

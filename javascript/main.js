@@ -1,3 +1,112 @@
+const days2 = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var nextButton = document.getElementById("moveScheduleFordward");
+var previousButton = document.getElementById("moveScheduleBackward");
+var buttonCounter = 0;
+var newCounter = 0;
+var lessDate = new Date();
+lessDate.getDay();
+console.log(lessDate.getDay());
+
+function resetdaysLess(){
+  if(buttonCounter == 7){
+    buttonCounter = 0;
+    buttonCounter--;
+    return buttonCounter;
+  }
+  else if(buttonCounter >=0){
+    return buttonCounter;
+  }
+  /*buttonCounter--;
+  console.log("buttonCounter original: " + buttonCounter);
+
+  if(buttonCounter == -1){
+    console.log("buttonCounter in -1: " + buttonCounter);
+    buttonCounter = 1;
+    console.log("buttonCounter in -1 after setting: " + buttonCounter);
+    return buttonCounter;
+  }
+  else if(buttonCounter == 0) {
+    console.log("buttonCounter in equal to 0: " + buttonCounter);
+    newCounter++;
+    console.log("buttonCounter in equal to 0 after setting: " + buttonCounter);
+
+    return newCounter;
+  }
+  else if(buttonCounter <= 7 ){
+    console.log("buttonCounter is less than 6: " + buttonCounter);
+    newCounter++;
+    return newCounter;
+  }
+  else{
+    buttonCounter = 0;
+  }*/
+}
+
+function resetdaysMore(){
+  buttonCounter++;
+  console.log("inside more, buttonCounter: " + buttonCounter);
+  if (buttonCounter == 7){
+    buttonCounter = 0;
+    return buttonCounter;
+  }
+  else if(buttonCounter >=0){
+    return buttonCounter;
+  }
+}
+
+previousButton.addEventListener("click", function(){
+ var i = resetdaysLess();
+  console.log("pressed previousButton... buttonCount: " + i);
+  dOfWeek.innerHTML = newYesterdayAlphaDay(buttonCounter) ;
+});
+
+nextButton.addEventListener("click", function(){
+  var i = resetdaysMore();
+  console.log("pressed nextButton... buttonCount or i: " + i );
+  dOfWeek.innerHTML = newTomorrowAlphaDay(buttonCounter) ;
+});
+
+function newYesterdayAlphaDay(counter){
+  var date = new Date();
+  date.setDate(date.getDate() - counter);
+  return days2[date.getDay()];
+}
+function newTomorrowAlphaDay(counter){
+  var date = new Date();
+  date.setDate(date.getDate() + counter);
+  return days2[date.getDay()];
+}
+
+
+
+
+//Starting display
+var yDOfWeek = document.getElementById("yesterdayDayOfWeek");
+yDOfWeek.innerHTML = getYesterdayAlphaDay();//Show the day of the week for yesterdays date
+
+var yOfMonth = document.getElementById("yesterNumberOfMonth");
+yOfMonth.innerHTML = "<b>" + getYesterdayMonth() + "</b>" + " " +getYesterdayNumberDay() + " " + getYesterdayYear() ;//
+
+var dOfWeek = document.getElementById("dayOfWeek");
+//var month = document.getElementById("monthText");
+dOfWeek.innerHTML = getTodayAlphaDay() ;
+var dOfMonth = document.getElementById("numberOfMonth");
+//month.innerHTML = getMonthText()
+dOfMonth.innerHTML = "<b>" + getTodayMonthText() + "</b>"  + " " + getTodayMonth() + " " + getTodayCurrentYear();
+
+var tDOfWeek = document.getElementById("tomorrowDayOfWeek");
+tDOfWeek.innerHTML = getTomorrowAlphaDay() ;
+
+var tDOfMonth = document.getElementById("tomorrowNumberOfMonth");
+tDOfMonth.innerHTML = "<b>" + getTomorrowMonth() + "</b>" + " " + getTomorrowNumberDay() + " " + getTomorrowYear() ;//
+
+
+
+
+
+
+
 var createDate = new Date();
 var todaysDateDay = createDate.getDate();
 console.log("Date today: " + todaysDateDay);
@@ -156,8 +265,7 @@ console.log(newTask3.taskID + "\n" + newTask3.getStartDate() + "\n" + newTask3.g
 getFirstDayOfMonth(2019,04);
 function getFirstDayOfMonth(year, month){
     var date = new Date(year, month, 1);
-    var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-    return days[date.getDay()];
+    return days2[date.getDay()];
 }
 function getTodayMonth(){
   var i = new Date();
@@ -165,13 +273,11 @@ function getTodayMonth(){
 }
 function getTodayMonthText(){
   var i = new Date();
-  var months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   return months[i.getMonth()];
 }
 function getTodayAlphaDay(){
   var day = new Date();
-  var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-  return days[day.getDay()];
+  return days2[day.getDay()];
 }
 function getTodayCurrentYear(){
   var year = new Date();
@@ -179,20 +285,19 @@ function getTodayCurrentYear(){
 }
 
 function getYesterdayAlphaDay(){
-  var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
   var date = new Date();
   date.setDate(date.getDate() - 1)
-  return days[date.getDay()];
+  return days2[date.getDay()];
 }
 
+//Returns
 function getYesterdayMonth(){
-  var months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var d = new Date();
   d.setDate(d.getDate() - 1); //Set the date to be yesterdays date
   //console.log(d);
   //var curr_date = d.getDate();
-  var curr_month = d.getMonth() ;
-  return months[curr_month];
+  var month = d.getMonth() ;
+  return months[month];
 //console.log(curr_month);
 //var curr_year = d.getFullYear();
 }
@@ -203,25 +308,35 @@ function getYesterdayNumberDay(){
   return d.getDate();
 }
 
-function getyesterdayYear(){
+function getYesterdayYear(){
   var d = new Date();
   d.setDate(d.getDate() - 1); //Set the date to be yesterdays date
+  return d.getFullYear();
+}
+
+function getTomorrowMonth(){
+  var d = new Date();
+  d.setDate(d.getDate() + 1); //Set the date to be yesterdays date
+  //console.log(d);
+  //var curr_date = d.getDate();
+  var month = d.getMonth() ;
+  return months[month];
+//console.log(curr_month);
+//var curr_year = d.getFullYear();
+}
+function getTomorrowAlphaDay(){
+  var date = new Date();
+  date.setDate(date.getDate() + 1);
+  return days2[date.getDay()];
+}
+function getTomorrowNumberDay(){
+  var d = new Date();
+  d.setDate(d.getDate() + 1); //Set the date to be yesterdays date
   return d.getDate();
 }
-var yDOfWeek = document.getElementById("yesterdayDayOfWeek");
-yDOfWeek.innerHTML = getYesterdayAlphaDay();
 
-var yOfMonth = document.getElementById("yesterNumberOfMonth");
-yOfMonth.innerHTML = "<b>" + getYesterdayMonth() + "</b>" + " " +getYesterdayNumberDay() + " "  ;
-
-var dOfWeek = document.getElementById("dayOfWeek");
-var dOfMonth = document.getElementById("numberOfMonth");
-
-var tDOfWeek = document.getElementById("tomorrowDayOfWeek");
-var tDOfMonth = document.getElementById("tomorrowNumberOfMonth");
-
-//var month = document.getElementById("monthText");
-dOfWeek.innerHTML = getTodayAlphaDay() ;
-
-//month.innerHTML = getMonthText()
-dOfMonth.innerHTML = "<b>" + getTodayMonthText() + "</b>"  + " " + getTodayMonth() + " " + getTodayCurrentYear();
+function getTomorrowYear(){
+  var d = new Date();
+  d.setDate(d.getDate() + 1); //Set the date to be yesterdays date
+  return d.getFullYear();
+}
