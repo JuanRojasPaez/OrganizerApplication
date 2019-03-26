@@ -163,24 +163,65 @@ function getTodayMonth(){
   var i = new Date();
   return i.getDate();
 }
-function getMonthText(){
+function getTodayMonthText(){
   var i = new Date();
   var months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   return months[i.getMonth()];
 }
-function getAlphaDay(){
+function getTodayAlphaDay(){
   var day = new Date();
   var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
   return days[day.getDay()];
 }
-function getCurrentYear(){
+function getTodayCurrentYear(){
   var year = new Date();
   return year.getFullYear();
 }
+
+function getYesterdayAlphaDay(){
+  var days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+  var date = new Date();
+  date.setDate(date.getDate() - 1)
+  return days[date.getDay()];
+}
+
+function getYesterdayMonth(){
+  var months = ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var d = new Date();
+  d.setDate(d.getDate() - 1); //Set the date to be yesterdays date
+  //console.log(d);
+  //var curr_date = d.getDate();
+  var curr_month = d.getMonth() ;
+  return months[curr_month];
+//console.log(curr_month);
+//var curr_year = d.getFullYear();
+}
+
+function getYesterdayNumberDay(){
+  var d = new Date();
+  d.setDate(d.getDate() - 1); //Set the date to be yesterdays date
+  return d.getDate();
+}
+
+function getyesterdayYear(){
+  var d = new Date();
+  d.setDate(d.getDate() - 1); //Set the date to be yesterdays date
+  return d.getDate();
+}
+var yDOfWeek = document.getElementById("yesterdayDayOfWeek");
+yDOfWeek.innerHTML = getYesterdayAlphaDay();
+
+var yOfMonth = document.getElementById("yesterNumberOfMonth");
+yOfMonth.innerHTML = "<b>" + getYesterdayMonth() + "</b>" + " " +getYesterdayNumberDay() + " "  ;
+
 var dOfWeek = document.getElementById("dayOfWeek");
 var dOfMonth = document.getElementById("numberOfMonth");
+
+var tDOfWeek = document.getElementById("tomorrowDayOfWeek");
+var tDOfMonth = document.getElementById("tomorrowNumberOfMonth");
+
 //var month = document.getElementById("monthText");
-dOfWeek.innerHTML = getAlphaDay() ;
-dOfMonth.style.fontWeight = 'bold';
+dOfWeek.innerHTML = getTodayAlphaDay() ;
+
 //month.innerHTML = getMonthText()
-dOfMonth.innerHTML = "<b>" + getMonthText() + "</b>"  + " " + getTodayMonth() + " " + getCurrentYear();
+dOfMonth.innerHTML = "<b>" + getTodayMonthText() + "</b>"  + " " + getTodayMonth() + " " + getTodayCurrentYear();

@@ -23,11 +23,19 @@ fieldset{
   font-weight: 500;
 
 }
-
+.dateYesterday{
+  background-color: #5F95FF;
+  color:white;
+}
 .dateToday{
   background-color: #5995DD;
   color:white;
 }
+.dateTomorrow{
+  background-color: #5F95FF;
+  color:white;
+}
+
 .numberTodayDay{
   font-size: 50px;
 }
