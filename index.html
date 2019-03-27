@@ -15,101 +15,95 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row text-center">
-        <div class="col-md-1 col-sm-1 align-middle">
-          <button type="button" class="btn btn-primary align-middle" id="moveScheduleBackward">Prev</button>
-        </div>
-        <div class="col-md-3 col-sm-3 center-block">
-          <div class="dateYesterday">
-              <div class="text-center styleDay" id="yesterdayDayOfWeek"></div>
-              <div class="text-center numberTodayDay"  id= "yesterNumberOfMonth"></div>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-4 center-block">
+    <div class="container-fluid topSpacing">
+      <div class="row text-center no-gutter">
+        <div class="col-md-3 col-sm-3  center-block"></div>
+        <div class="col-md-6 col-sm-6  center-block">
           <div class="dateToday">
               <div class="text-center styleDay" id="dayOfWeek"></div>
               <div class="text-center numberTodayDay"  id= "numberOfMonth"></div>
           </div>
         </div>
-        <div class="col-md-3 col-sm-3 center-block">
-          <div class="dateTomorrow">
-              <div class="text-center styleDay" id="tomorrowDayOfWeek"></div>
-              <div class="text-center numberTodayDay"  id= "tomorrowNumberOfMonth"></div>
+        <div class="col-md-3 col-sm-3  center-block"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-3 center-block " style="background-color:#D4E1E3">
+          <div class="text-center">
+          <button class="newTask" onclick="displayTaskCreator()">NEW TASK</button>
+        </div>
+            <form name="taskCreator" id="tCreator">
+              <div class="form-group">
+                <label for="tName">Task Name <span class="required">*</span></label><br>
+                <input class="form-control"type="text" name="taskName" id="tName" placeholder="--Title--"  required>
+              </div>
+              <div class="form-group">
+                <label for="tDesc">Task Description <span class="required">*</span></label><br>
+                <textarea class="form-control"type="textarea"rows="4" cols="50" maxlength="150" name="taskDesc" id="tDesc" placeholder="--Description--" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="tLocation">Location <span class="required">*</span></label><br>
+                <input class="form-control"type="text" name="taskLocation" id="tLocation" placeholder="--Location--" required>
+              </div>
+              <div class="checkbox">
+                    <label for="tAllDay">All Day Event:
+                      <input type="checkbox" name="taskLocation" id="tAllDay" value="" />
+                    </label>
+              </div>
+              <div class="form-group">
+                <label for="tStartDate">Starting Date <span class="required">*</span></label><br>
+                <input class="form-control" type="date" name="taskStartDate" id="tStartDate" required>
+              </div>
+                <!--<
+                label for="tStartTime">Starting Time <span class="required">*</span></label><br>
+                <input type="time" name="taskStartTime" id="tStartTime" required>
+                <br>
+                -->
+                <!--
+                <label for="tEndDate">Ending Time <span class="required">*</span></label><br>
+                <input type="date" name="taskeEndDate" id="tEndDate" required>
+                <br>
+              -->
+              <!--
+                <label for="tEndTime">End Time <span class="required">*</span></label><br>
+                <input type="time" name="taskEndTime" id="tEndTime" required>
+              -->
+                <div class="row">
+                  <div class="col-md-6 text-center">
+                    <button class="btn btn-success"type="submit" value="" onclick="newTaskSubmit()">Submit my task</button>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <button style="color:white"class="btn btn-warning"type="reset">Reset</button>
+                  </div>
+                </div>
+            </form>
+      </div>
+        <div class="col-md-6 col-sm-6 center-block border border-primary text-center" >
+          <p style="line-height: 200px;">
+            Looks like you have no tasks for today!
+          </p>
+        </div>
+        <div class="col-md-3 col-sm-3  center-block"></div>
+    </div>
+    <div class="row no-gutter top-buffer">
+      <div class="col-md-3 col-sm-3  center-block"></div>
+      <div class="col-md-6 col-sm-3  center-block">
+        <button class="addChild btn btn btn-info" onclick="">ADD a child </button>
+        <form>
+          <div class="form-group">
+            <label for="childFName">First Name<span class="required">*</span></label><br>
+            <input type="text" name="childFName" id="cfName" placeholder="--First Name--"  required>
           </div>
-        </div>
-        <div class="col-md-1 col-sm-1">
-          <button type="button" class="btn btn-primary" id="moveScheduleFordward">next</button>
-        </div>
+          <div class="form-group">
+          <label for="childLName">Last Name<span class="required">*</span></label><br>
+          <input type="text" name="childLName" id="clName" placeholder="--Last Name--"  required>
+          </div>
+          <button class="btn btn-primary" type="submit" value="Submit my task" onclick="createNewChild()">Submit</button><input type="reset">
+        </form>
       </div>
+      <div class="col-md-3 col-sm-3  center-block"></div>
 
-      <div class="row text-center openSpaceTasks tasksStyling">
-        <div class="col-md-3 offset-md-1">
-          <div class="text-center">tasks</div>
-        </div>
-        <div class="col-md-4">
-          <div class="text-center">tasks</div>
-        </div>
-        <div class="col-md-3 ">
-          <div class="text-center">tasks</div>
-        </div>
-      </div>
     </div>
-
-
-    <div>
-    <button class="addChild" onclick="">ADD a child </button>
-    <form>
-      <label for="childFName">First Name<span class="required">*</span></label><br>
-      <input type="text" name="childFName" id="cfName" placeholder="--First Name--"  required>
-      <br>
-      <label for="childLName">Last Name<span class="required">*</span></label><br>
-      <input type="text" name="childLName" id="clName" placeholder="--Last Name--"  required>
-      <br>
-      <input type="submit" value="Submit my task" onclick="createNewChild()"><input type="reset">
-    </form>
   </div>
-
-    <button class="newTask" onclick="displayTaskCreator()">NEW TASK</button>
-    <div class="formDisplay">
-      <form name="taskCreator" id="tCreator">
-        <fieldset>
-
-          <label for="tName">Task Name <span class="required">*</span></label><br>
-          <input type="text" name="taskName" id="tName" placeholder="--Title--"  required>
-          <br>
-
-          <label for="tDesc">Task Description <span class="required">*</span></label><br>
-          <textarea type="textarea"rows="4" cols="50" maxlength="150" name="taskDesc" id="tDesc" placeholder="--Description--" required></textarea>
-          <br>
-
-          <label for="tLocation">Location <span class="required">*</span></label><br>
-          <input type="text" name="taskLocation" id="tLocation" placeholder="--Location--" required>
-          <br>
-
-          <label for="tAllDay">All Day Event:</label>
-          <input type="checkbox" name="taskLocation" id="tAllDay">
-          <br>
-
-          <label for="tStartDate">Starting Date <span class="required">*</span></label><br>
-          <input type="date" name="taskStartDate" id="tStartDate" required>
-          <br>
-
-          <label for="tStartTime">Starting Time <span class="required">*</span></label><br>
-          <input type="time" name="taskStartTime" id="tStartTime" required>
-          <br>
-
-          <label for="tEndDate">Ending Time <span class="required">*</span></label><br>
-          <input type="date" name="taskeEndDate" id="tEndDate" required>
-          <br>
-
-          <label for="tEndTime">End Time <span class="required">*</span></label><br>
-          <input type="time" name="taskEndTime" id="tEndTime" required>
-          <br><br>
-        <input type="submit" value="Submit my task"><input type="reset">
-      </fieldset>
-      </form>
-    </div>
 
 
 

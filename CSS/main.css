@@ -6,22 +6,28 @@ fieldset{
       background-color: #0893F0;
       border:none;
 }
-#tCreator  label{
-  color:white;
+.row.no-gutter {
+  /*margin-left: 0;
+  margin-right: 0;*/
 }
+
+/*Remove gutters between boostrap columns*/
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
+}
+.top-buffer { margin-top:20px; }
 #tAllDay{
   margin-bottom:10px;
   width: 0px;
 }
-.addChild{
-  padding:10px;
-  background-color: #4EC4B9;
-  border-radius: 10px;
-  padding: 7px 25px 10px 25px;
-  color:white;
-  font-size: 15px;
-  font-weight: 500;
 
+.taskSpacer{
+  padding-top: 10%;
+}
+.topSpacing{
+  margin-top: 10px;
 }
 .dateYesterday{
   background-color: #5F95FF;
@@ -64,8 +70,7 @@ input[type=text],input[type=date],input[type=time], textarea  {
 }
 #tCreator{
   display: none;
-  margin-top: 10px;
-    margin-right: 50%;
+  padding-top: 10px;
 }
 
 .newTask{
@@ -94,22 +99,7 @@ input[type=submit]{
   width:200px;
 }
 
-input[type=reset]{
-  background-color: #E65A71 ;
-  border-radius: 10px;
-  border-width: 0px;
-    border: none;
-  padding: 7px 25px 10px 25px;
-  color:white;
-  font-size: 15px;
-  font-weight: 500;
-  box-shadow: 0px 2px 3px  #8a8f91
-              ,0 2px 2px #8a8f91;
-  transition: all 0.1s ease-out;
-  width:200px;
-  margin-right: 10px;
-  width: 126px;
-}
+
 
 input[type=submit]:active, input[type=reset]:active, .newTask:active
 {

@@ -1,3 +1,39 @@
+var newTaskName;
+var newTaskDesc;
+var newTaskLocation;
+var newTaskEventAllDay;
+var newTaskStartingDate;
+
+var separatedYear;
+var separatedMonth;
+var separatedDay;
+var newDate = new Date();
+
+alert("Current month: " + newDate.getMonth());
+//Assign form values
+function newTaskSubmit(){
+
+  //asign submited values
+  newTaskName = document.getElementById("tName").value;
+  newTaskDesc = document.getElementById("tDesc").value;
+  newTaskLocation = document.getElementById("tLocation").value;
+  newTaskEventAllDay = document.getElementById("tAllDay").value;
+  newTaskStartingDate = document.getElementById("tStartDate").value;
+
+  //separate date
+  var arr = newTaskStartingDate.split("-");
+  separatedYear =  arr[0];
+  separatedMonth=  arr[1];
+  separatedDay = arr[2];
+  alert(separatedYear +" " + separatedMonth + " " + separatedDay);
+}
+
+function insertTaskToday(){
+ if(getTodayNumber() == separatedDay){
+
+ }
+}
+
 const days2 = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var nextButton = document.getElementById("moveScheduleFordward");
@@ -55,7 +91,7 @@ function resetdaysMore(){
   }
 }
 
-previousButton.addEventListener("click", function(){
+/*previousButton.addEventListener("click", function(){
  var i = resetdaysLess();
   console.log("pressed previousButton... buttonCount: " + i);
   dOfWeek.innerHTML = newYesterdayAlphaDay(buttonCounter) ;
@@ -65,7 +101,7 @@ nextButton.addEventListener("click", function(){
   var i = resetdaysMore();
   console.log("pressed nextButton... buttonCount or i: " + i );
   dOfWeek.innerHTML = newTomorrowAlphaDay(buttonCounter) ;
-});
+});*/
 
 function newYesterdayAlphaDay(counter){
   var date = new Date();
@@ -82,24 +118,15 @@ function newTomorrowAlphaDay(counter){
 
 
 //Starting display
-var yDOfWeek = document.getElementById("yesterdayDayOfWeek");
-yDOfWeek.innerHTML = getYesterdayAlphaDay();//Show the day of the week for yesterdays date
-
-var yOfMonth = document.getElementById("yesterNumberOfMonth");
-yOfMonth.innerHTML = "<b>" + getYesterdayMonth() + "</b>" + " " +getYesterdayNumberDay() + " " + getYesterdayYear() ;//
 
 var dOfWeek = document.getElementById("dayOfWeek");
 //var month = document.getElementById("monthText");
 dOfWeek.innerHTML = getTodayAlphaDay() ;
 var dOfMonth = document.getElementById("numberOfMonth");
 //month.innerHTML = getMonthText()
-dOfMonth.innerHTML = "<b>" + getTodayMonthText() + "</b>"  + " " + getTodayMonth() + " " + getTodayCurrentYear();
+dOfMonth.innerHTML = "<b>" + getTodayNumberText() + "</b>"  + " " + getTodayNumber() + " " + getTodayCurrentYear();
 
-var tDOfWeek = document.getElementById("tomorrowDayOfWeek");
-tDOfWeek.innerHTML = getTomorrowAlphaDay() ;
 
-var tDOfMonth = document.getElementById("tomorrowNumberOfMonth");
-tDOfMonth.innerHTML = "<b>" + getTomorrowMonth() + "</b>" + " " + getTomorrowNumberDay() + " " + getTomorrowYear() ;//
 
 
 
@@ -152,45 +179,51 @@ Task1.prototype.getCreatedDate = function(){
   return (this.createdMonth + " " + this.createdDay + " " + this.createdYear);
 }
 
-function Task2(){
-  this.taskName = "Sophie Piano Lessons";
-  this.taskID = "948846";
+//Object for task2
+var Task2 = {
+  taskName: "Sophie Piano Lessons",
+  taskID: "948846",
 
-  this.createdMonth = "January";
-  this.createdDay = "13";
-  this.createdYear = "2019";
+  createdMonth : "January",
+  createdDay : "13",
+  createdYear : "2019",
 
-  this.startMonth = "February";
-  this.startDay = "16";
-  this.startYear = "2019";
+  startMonth : "February",
+  startDay : "16",
+  startYear : "2019",
 
-  this.endMonth = "February";
-  this.endDay = "16";
-  this.endYear = "2019";
+  endMonth : "February",
+  endDay : "16",
+  endYear : "2019",
 
-  this.startTime = "8 AM";
-  this.endTime = "9:30 am";
+  startTime : "8 AM",
+  endTime : "9:30 am",
 
-  this.reminderTime = "7AM";
-  this.location = "School";
+  reminderTime : "7AM",
+  location : "School",
 
-  this.repeatDays = ["Monday","Saturday"];
+  repeatDays :["Monday","Saturday"],
 
-  this.specialNotes = "Bring notes and piano";
+  specialNotes : "Bring notes and piano",
 
-  this.childAttending = true;
+  childAttending : true,
 
-  this.childAttendingName = "Sophie";
-}
-Task2.prototype.getStartDate = function(){
-  return (this.startMonth + " " + this.startDay + " " + this.startYear);
-}
-Task2.prototype.getEndDate = function(){
-  return (this.endMonth + " " + this.endDay + " " + this.endYear);
-}
-Task2.prototype.getCreatedDate = function(){
-  return (this.createdMonth + " " + this.createdDay + " " + this.createdYear);
-}
+  childAttendingName : "Sophie",
+
+  getStartDate : function(){
+    return ("Start date now: " + this.startMonth + " " + this.startDay + " " + this.startYear);
+  },
+
+  getEndDate : function(){
+    return (this.endMonth + " " + this.endDay + " " + this.endYear);
+  },
+
+  getCreatedDate : function(){
+    return (this.createdMonth + " " + this.createdDay + " " + this.createdYear);
+
+  },
+};
+//console.log(Task2.getStartDate());
 
 function Task3(){
   this.taskName = "Dentist Appointment";
@@ -267,11 +300,15 @@ function getFirstDayOfMonth(year, month){
     var date = new Date(year, month, 1);
     return days2[date.getDay()];
 }
-function getTodayMonth(){
+
+//get day of month
+function getTodayNumber(){
   var i = new Date();
   return i.getDate();
 }
-function getTodayMonthText(){
+
+//get month in text
+function getTodayNumberText(){
   var i = new Date();
   return months[i.getMonth()];
 }
