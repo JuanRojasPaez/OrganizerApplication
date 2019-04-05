@@ -3,9 +3,12 @@ var newTaskDesc;
 var newTaskLocation;
 var newTaskEventAllDay;
 var newTaskStartingDate;
-
+var chosenColor;
 var holder = document.getElementById("spacerForTasks");
 var noTasksOnCurrentDay = document.getElementById('noCreatedTasks');
+
+var modalChange = document.getElementById('exampleModalLabel');
+var textInsideModal = document.getElementById('insideModal');
 
 var separatedYear;
 var separatedMonth;
@@ -19,8 +22,8 @@ var todayMonth = today.getMonth();
 
 //Array containing objects.
 var tasksCreated = [
-  {taskName: 'Mike piano lessons', taskDescription: 'Piano lessons for Mike at 3:30pm', taskLocation: 'Piano School', taskAllDay: false, taskStartingYear: 2019, taskStartingMonth: 03, taskStartingDay: 13, taskCompleted: false},
-  {taskName: 'Christies friends birthday', taskDescription: "Cristie's friend has birthday party at 1pm", taskLocation: '123 Sample Street Road', taskAllDay: true, taskStartingYear: 2019, taskStartingMonth: todayMonth,taskStartingDay: todayDay, taskCompleted: false },
+  {id: 0, taskName: 'Mike piano lessons', taskDescription: 'Piano lessons for Mike at 3:30pm', taskLocation: 'Piano School', taskAllDay: false, taskStartingYear: 2019, taskStartingMonth: 03, taskStartingDay: 13, taskCompleted: false,colorPicked: '#00dfb8'},
+  {id:1, taskName: 'Lucy soccer practise', taskDescription: "Lucy has soccer practise at 1pm", taskLocation: '123 Sample Street Road', taskAllDay: true, taskStartingYear: 2019, taskStartingMonth: todayMonth, taskStartingDay: todayDay, taskCompleted: false,colorPicked: '#FCCC3A' },
 ];
 
 printSelectedTasks();
@@ -35,7 +38,7 @@ function newTaskSubmit(){
   newTaskLocation = document.getElementById("tLocation").value;
   newTaskEventAllDay = document.getElementById("tAllDay").checked;
   newTaskStartingDate = document.getElementById("tStartDate").value;
-
+  chosenColor = document.getElementById("chosenColor").value;
   /*
   separate date into Year, Month, Day.
   String has to be parsed into an int to be compared with current date.
@@ -49,6 +52,7 @@ function newTaskSubmit(){
   Add form values to array of objects
   */
   tasksCreated.push({
+    id:tasksCreated.length,
     taskName: newTaskName,
     taskDescription: newTaskDesc,
     taskLocation: newTaskLocation,
@@ -56,7 +60,8 @@ function newTaskSubmit(){
     taskStartingYear: separatedYear,
     taskStartingMonth: separatedMonth,
     taskStartingDay: separatedDay,
-    taskCompleted: false
+    taskCompleted: false,
+    colorPicked: chosenColor
   });
 
   /*
@@ -73,18 +78,38 @@ function newTaskSubmit(){
   printSelectedTasks();
 }
 
+/*
 
+*/
 function printSelectedTasks(){
   holder.innerHTML = '';
+  modalChange.innerHTML = "";
   for(var i = 0;i < tasksCreated.length;i++){
     if(tasksCreated[i].taskStartingDay == todayDay){
       noTasksOnCurrentDay.style.display = "none";
     }
     if(tasksCreated[i].taskStartingDay == todayDay){
-      holder.innerHTML += "<span>"+ tasksCreated[i].taskName + "</span><br>";
+      holder.innerHTML += "<button class='btn changeFontColor' style='background-color:" +  tasksCreated[i].colorPicked +  "'"+ 'data-toggle="modal" data-target="#exampleModal"'+  "id= "+tasksCreated[i].id   +" onClick= checkTaskButtonClicked(this.id)>" + tasksCreated[i].taskName + "</button><br>";
     }
   }
 }
+
+
+function  checkTaskButtonClicked(uniqueID){
+//alert(uniqueID);
+var uniqueIdToInt = parseInt(uniqueID);
+var isAllDayEvent;
+tasksCreated[uniqueIdToInt].taskName;
+modalChange.innerHTML = tasksCreated[uniqueIdToInt].taskName;
+if(tasksCreated[uniqueIdToInt].taskAllDay){
+  isAllDayEvent = "This event is occuring all day";
+}
+else{
+  isAllDayEvent = "This event is not occuring all day"
+}
+textInsideModal.innerHTML = "<b>Description: </b>" + tasksCreated[uniqueIdToInt].taskDescription + "<br>" + "<b>Location: </b>" + tasksCreated[uniqueIdToInt].taskLocation + "<br>" + "<b>Duration of event: </b>" +isAllDayEvent;
+}
+
 
 function insertTaskToday(){
  if(getTodayNumber() == separatedDay){

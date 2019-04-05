@@ -25,6 +25,13 @@ fieldset{
 #spacerForTasks{
   line-height:80px;
 }
+#noCreatedTasks{
+  margin: 30px;
+}
+
+.changeFontColor{
+  color:white !important;
+}
 .taskSpacer{
   padding-top: 10%;
 }
