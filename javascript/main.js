@@ -9,22 +9,38 @@ var separatedMonth;
 var separatedDay;
 var newDate = new Date();
 
-alert("Current month: " + newDate.getMonth());
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth();
+alert(dd);
+
+var tasksCreated = [
+  {taskName: 'Mike piano lessons', taskDescription: 'Piano lessons for Mike at 3:30pm', taskLocation: 'Piano School', taskAllDay: false, taskStartingYear: 2019, taskStartingMonth: 03, taskStartingDay: 13 },
+  {taskName: 'Christies friends birthday', taskDescription: "Cristie's friend has birthday party at 1pm", taskLocation: '123 Sample Street Road', taskAllDay: true, taskStartingYear: 2019, taskStartingMonth: mm,taskStartingDay: dd },
+];
+
 //Assign form values
 function newTaskSubmit(){
-
   //asign submited values
   newTaskName = document.getElementById("tName").value;
   newTaskDesc = document.getElementById("tDesc").value;
   newTaskLocation = document.getElementById("tLocation").value;
-  newTaskEventAllDay = document.getElementById("tAllDay").value;
+  newTaskEventAllDay = document.getElementById("tAllDay").checked;
   newTaskStartingDate = document.getElementById("tStartDate").value;
-
+alert(newTaskEventAllDay);
   //separate date
   var arr = newTaskStartingDate.split("-");
   separatedYear =  arr[0];
   separatedMonth=  arr[1];
   separatedDay = arr[2];
+
+//CONTINUE
+  tasksCreated.push({
+    taskName: newTaskName,
+    taskDescription: newTaskDesc,
+    taskLocation: newTaskLocation,
+    task
+  })
   alert(separatedYear +" " + separatedMonth + " " + separatedDay);
 }
 
