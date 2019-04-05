@@ -4,44 +4,86 @@ var newTaskLocation;
 var newTaskEventAllDay;
 var newTaskStartingDate;
 
+var holder = document.getElementById("spacerForTasks");
+var noTasksOnCurrentDay = document.getElementById('noCreatedTasks');
+
 var separatedYear;
 var separatedMonth;
 var separatedDay;
 var newDate = new Date();
 
 var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth();
-alert(dd);
+var todayDay = today.getDate();
+var todayMonth = today.getMonth();
+//alert(dd);
 
+//Array containing objects.
 var tasksCreated = [
-  {taskName: 'Mike piano lessons', taskDescription: 'Piano lessons for Mike at 3:30pm', taskLocation: 'Piano School', taskAllDay: false, taskStartingYear: 2019, taskStartingMonth: 03, taskStartingDay: 13 },
-  {taskName: 'Christies friends birthday', taskDescription: "Cristie's friend has birthday party at 1pm", taskLocation: '123 Sample Street Road', taskAllDay: true, taskStartingYear: 2019, taskStartingMonth: mm,taskStartingDay: dd },
+  {taskName: 'Mike piano lessons', taskDescription: 'Piano lessons for Mike at 3:30pm', taskLocation: 'Piano School', taskAllDay: false, taskStartingYear: 2019, taskStartingMonth: 03, taskStartingDay: 13, taskCompleted: false},
+  {taskName: 'Christies friends birthday', taskDescription: "Cristie's friend has birthday party at 1pm", taskLocation: '123 Sample Street Road', taskAllDay: true, taskStartingYear: 2019, taskStartingMonth: todayMonth,taskStartingDay: todayDay, taskCompleted: false },
 ];
 
-//Assign form values
+printSelectedTasks();
+/*
+  Pick up submited form values and add them to the tasksCreated array
+  (In real world this would be added to database)
+*/
 function newTaskSubmit(){
-  //asign submited values
+  //assign submited values
   newTaskName = document.getElementById("tName").value;
   newTaskDesc = document.getElementById("tDesc").value;
   newTaskLocation = document.getElementById("tLocation").value;
   newTaskEventAllDay = document.getElementById("tAllDay").checked;
   newTaskStartingDate = document.getElementById("tStartDate").value;
-alert(newTaskEventAllDay);
-  //separate date
-  var arr = newTaskStartingDate.split("-");
-  separatedYear =  arr[0];
-  separatedMonth=  arr[1];
-  separatedDay = arr[2];
 
-//CONTINUE
+  /*
+  separate date into Year, Month, Day.
+  String has to be parsed into an int to be compared with current date.
+  */
+  var arr = newTaskStartingDate.split("-");
+  separatedYear =  parseInt(arr[0],10);
+  separatedMonth=  parseInt(arr[1],10);
+  separatedDay = parseInt(arr[2],10);
+
+  /*
+  Add form values to array of objects
+  */
   tasksCreated.push({
     taskName: newTaskName,
     taskDescription: newTaskDesc,
     taskLocation: newTaskLocation,
-    task
-  })
-  alert(separatedYear +" " + separatedMonth + " " + separatedDay);
+    taskAllDay: newTaskEventAllDay,
+    taskStartingYear: separatedYear,
+    taskStartingMonth: separatedMonth,
+    taskStartingDay: separatedDay,
+    taskCompleted: false
+  });
+
+  /*
+    Reset value forms to allow for a new task to be created
+  */
+  document.getElementById("tName").value = '';
+  document.getElementById("tDesc").value = '';
+  document.getElementById("tLocation").value = '';
+  document.getElementById("tAllDay").checked = '';
+  document.getElementById("tStartDate").value = '';
+
+  event.preventDefault();
+  //alert(separatedYear +" " + separatedMonth + " " + separatedDay);
+  printSelectedTasks();
+}
+
+
+function printSelectedTasks(){
+  holder.innerHTML = '';
+  for(var i = 0;i < tasksCreated.length;i++){
+    if(tasksCreated[i].taskStartingDay == todayDay){
+      noTasksOnCurrentDay.style.display = "none";
+    }
+    if(tasksCreated[i].taskStartingDay == todayDay){
+      holder.innerHTML += "<span>"+ tasksCreated[i].taskName + "</span><br>";
+    }
+  }
 }
 
 function insertTaskToday(){

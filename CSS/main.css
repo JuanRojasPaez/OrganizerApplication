@@ -22,7 +22,9 @@ fieldset{
   margin-bottom:10px;
   width: 0px;
 }
-
+#spacerForTasks{
+  line-height:80px;
+}
 .taskSpacer{
   padding-top: 10%;
 }
@@ -99,7 +101,9 @@ input[type=submit]{
   width:200px;
 }
 
-
+#noCreatedTasks{
+  display:block;
+}
 
 input[type=submit]:active, input[type=reset]:active, .newTask:active
 {
