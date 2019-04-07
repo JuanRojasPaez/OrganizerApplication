@@ -6,10 +6,10 @@ var newTaskStartingDate;
 var chosenColor;
 var holder = document.getElementById("spacerForTasks");
 var noTasksOnCurrentDay = document.getElementById('noCreatedTasks');
-
 var modalChange = document.getElementById('exampleModalLabel');
 var textInsideModal = document.getElementById('insideModal');
 
+var displayNumTasks = document.getElementById('numTasks');
 var separatedYear;
 var separatedMonth;
 var separatedDay;
@@ -27,6 +27,7 @@ var tasksCreated = [
 ];
 
 printSelectedTasks();
+
 /*
   Pick up submited form values and add them to the tasksCreated array
   (In real world this would be added to database)
@@ -79,9 +80,10 @@ function newTaskSubmit(){
 }
 
 /*
-
+  Show the tasks which have the same day as today's date
 */
 function printSelectedTasks(){
+  var numberOfTasks = 0;
   holder.innerHTML = '';
   modalChange.innerHTML = "";
   for(var i = 0;i < tasksCreated.length;i++){
@@ -90,8 +92,11 @@ function printSelectedTasks(){
     }
     if(tasksCreated[i].taskStartingDay == todayDay){
       holder.innerHTML += "<button class='btn changeFontColor' style='background-color:" +  tasksCreated[i].colorPicked +  "'"+ 'data-toggle="modal" data-target="#exampleModal"'+  "id= "+tasksCreated[i].id   +" onClick= checkTaskButtonClicked(this.id)>" + tasksCreated[i].taskName + "</button><br>";
+      numberOfTasks++;
     }
   }
+  displayNumTasks.innerHTML = "Number of tasks for today: " + numberOfTasks + "</br></br> Click on any task to find out more information" ;
+
 }
 
 

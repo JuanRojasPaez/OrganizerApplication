@@ -27,7 +27,7 @@
         <div class="col-md-3 col-sm-3  center-block"></div>
       </div>
       <div class="row">
-        <div class="col-md-3 col-sm-3 center-block " style="background-color:#D4E1E3">
+        <div class="col-md-3 col-sm-3 center-block " style="background-color:#4D5058">
           <div class="text-center">
           <button class="newTask" onclick="displayTaskCreator()">CREATE NEW TASK</button>
         </div>
@@ -81,10 +81,9 @@
                 </div>
             </form>
       </div>
-        <div class="col-md-6 col-sm-6 center-block border border-primary text-center" >
+        <div class="col-md-6 col-sm-6 center-block rounded-bottom borderCalendar  text-center" >
           <p id="noCreatedTasks"> Looks like you have no tasks for today. Why not try try creating one!</p>
           <p  id="spacerForTasks" >
-
           </p>
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -106,8 +105,13 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 col-sm-3  center-block"></div>
+        <div class="col-md-3 col-sm-3  center-block">
+            <p id="numTasks" class="tasksInfo">
+
+            </p>
+        </div>
     </div>
+    <!--Possible added feature to add a child to and event-->
   <!--
     <div class="row no-gutter top-buffer">
       <div class="col-md-3 col-sm-3  center-block"></div>

@@ -1,3 +1,10 @@
+body{
+  background-color:#4D5058 !important;
+}
+
+label{
+  color:white;
+}
 input{
   width:368px;
 }
@@ -22,6 +29,19 @@ fieldset{
   margin-bottom:10px;
   width: 0px;
 }
+
+.tasksInfo{
+  text-align: center;
+  font-size: 20px;
+  color:white;;
+}
+
+.borderCalendar{
+  border-color: #FB7D79;
+  border-style: solid;
+  border-width: 5px;
+  background-color: white;
+}
 #spacerForTasks{
   line-height:80px;
 }
@@ -43,7 +63,7 @@ fieldset{
   color:white;
 }
 .dateToday{
-  background-color: #5995DD;
+  background-color: #FB7D79;
   color:white;
 }
 .dateTomorrow{
@@ -84,12 +104,13 @@ input[type=text],input[type=date],input[type=time], textarea  {
 
 .newTask{
   padding:10px;
-  background-color: #3759B5;
+  background-color: #283B51;
   border-radius: 10px;
   padding: 7px 25px 10px 25px;
   color:white;
   font-size: 15px;
   font-weight: 500;
+  border:none;
 }
 input[type=submit]{
   padding:10px;
