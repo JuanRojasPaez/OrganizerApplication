@@ -4,10 +4,12 @@ var newTaskLocation;
 var newTaskEventAllDay;
 var newTaskStartingDate;
 var chosenColor;
+var dOfWeek = document.getElementById("dayOfWeek");
 var holder = document.getElementById("spacerForTasks");
 var noTasksOnCurrentDay = document.getElementById('noCreatedTasks');
 var modalChange = document.getElementById('exampleModalLabel');
 var textInsideModal = document.getElementById('insideModal');
+var dOfMonth = document.getElementById("numberOfMonth");
 
 var displayNumTasks = document.getElementById('numTasks');
 var separatedYear;
@@ -18,15 +20,20 @@ var newDate = new Date();
 var today = new Date();
 var todayDay = today.getDate();
 var todayMonth = today.getMonth();
-//alert(dd);
 
-//Array containing objects.
+const days2 = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+//Array containing test objects. Change 2nd task 'taskStartingDay' to another number to display empty message
 var tasksCreated = [
   {id: 0, taskName: 'Mike piano lessons', taskDescription: 'Piano lessons for Mike at 3:30pm', taskLocation: 'Piano School', taskAllDay: false, taskStartingYear: 2019, taskStartingMonth: 03, taskStartingDay: 13, taskCompleted: false,colorPicked: '#00dfb8'},
   {id:1, taskName: 'Lucy soccer practise', taskDescription: "Lucy has soccer practise at 1pm", taskLocation: '123 Sample Street Road', taskAllDay: true, taskStartingYear: 2019, taskStartingMonth: todayMonth, taskStartingDay: todayDay, taskCompleted: false,colorPicked: '#FCCC3A' },
 ];
 
 printSelectedTasks();
+
+dOfWeek.innerHTML = getTodayAlphaDay() ;
+dOfMonth.innerHTML = "<b>" + getTodayNumberText() + "</b>"  + " " + getTodayNumber() + " " + getTodayCurrentYear();
 
 /*
   Pick up submited form values and add them to the tasksCreated array
@@ -40,6 +47,7 @@ function newTaskSubmit(){
   newTaskEventAllDay = document.getElementById("tAllDay").checked;
   newTaskStartingDate = document.getElementById("tStartDate").value;
   chosenColor = document.getElementById("chosenColor").value;
+
   /*
   separate date into Year, Month, Day.
   String has to be parsed into an int to be compared with current date.
@@ -80,7 +88,7 @@ function newTaskSubmit(){
 }
 
 /*
-  Show the tasks which have the same day as today's date
+  Show the tasks which have the same day as today's date and display them.
 */
 function printSelectedTasks(){
   var numberOfTasks = 0;
@@ -99,38 +107,58 @@ function printSelectedTasks(){
 
 }
 
-
+/*
+  Display task information when task button is clicked.
+*/
 function  checkTaskButtonClicked(uniqueID){
-//alert(uniqueID);
-var uniqueIdToInt = parseInt(uniqueID);
-var isAllDayEvent;
-tasksCreated[uniqueIdToInt].taskName;
-modalChange.innerHTML = tasksCreated[uniqueIdToInt].taskName;
-if(tasksCreated[uniqueIdToInt].taskAllDay){
-  isAllDayEvent = "This event is occuring all day";
+    var uniqueIdToInt = parseInt(uniqueID);
+    var isAllDayEvent;
+    tasksCreated[uniqueIdToInt].taskName;
+    modalChange.innerHTML = tasksCreated[uniqueIdToInt].taskName;
+    if(tasksCreated[uniqueIdToInt].taskAllDay){
+      isAllDayEvent = "This event is occuring all day";
+    }
+    else{
+      isAllDayEvent = "This event is not occuring all day"
+    }
+    textInsideModal.innerHTML = "<b>Description: </b>" + tasksCreated[uniqueIdToInt].taskDescription + "<br>" + "<b>Location: </b>" + tasksCreated[uniqueIdToInt].taskLocation + "<br>" + "<b>Duration of event: </b>" +isAllDayEvent;
 }
-else{
-  isAllDayEvent = "This event is not occuring all day"
+
+//get current day of month
+function getTodayNumber(){
+  var i = new Date();
+  return i.getDate();
 }
-textInsideModal.innerHTML = "<b>Description: </b>" + tasksCreated[uniqueIdToInt].taskDescription + "<br>" + "<b>Location: </b>" + tasksCreated[uniqueIdToInt].taskLocation + "<br>" + "<b>Duration of event: </b>" +isAllDayEvent;
+//get current month in text format
+function getTodayNumberText(){
+  var i = new Date();
+  return months[i.getMonth()];
+}
+//get todays date in text format
+function getTodayAlphaDay(){
+  var day = new Date();
+  return days2[day.getDay()];
+}
+//get current year
+function getTodayCurrentYear(){
+  var year = new Date();
+  return year.getFullYear();
 }
 
 
-function insertTaskToday(){
- if(getTodayNumber() == separatedDay){
 
- }
-}
 
-const days2 = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+
+
+
+
+/*THE BELOW FEATURES WERE TEST METHODS TO DISPLAY THE DATA AND HAVE NOT BEEN USED*/
+
 var nextButton = document.getElementById("moveScheduleFordward");
 var previousButton = document.getElementById("moveScheduleBackward");
 var buttonCounter = 0;
 var newCounter = 0;
-var lessDate = new Date();
-lessDate.getDay();
-console.log(lessDate.getDay());
 
 function resetdaysLess(){
   if(buttonCounter == 7){
@@ -142,23 +170,18 @@ function resetdaysLess(){
     return buttonCounter;
   }
   /*buttonCounter--;
-  console.log("buttonCounter original: " + buttonCounter);
+
 
   if(buttonCounter == -1){
-    console.log("buttonCounter in -1: " + buttonCounter);
     buttonCounter = 1;
-    console.log("buttonCounter in -1 after setting: " + buttonCounter);
     return buttonCounter;
   }
   else if(buttonCounter == 0) {
-    console.log("buttonCounter in equal to 0: " + buttonCounter);
     newCounter++;
-    console.log("buttonCounter in equal to 0 after setting: " + buttonCounter);
 
     return newCounter;
   }
   else if(buttonCounter <= 7 ){
-    console.log("buttonCounter is less than 6: " + buttonCounter);
     newCounter++;
     return newCounter;
   }
@@ -169,7 +192,6 @@ function resetdaysLess(){
 
 function resetdaysMore(){
   buttonCounter++;
-  console.log("inside more, buttonCounter: " + buttonCounter);
   if (buttonCounter == 7){
     buttonCounter = 0;
     return buttonCounter;
@@ -178,18 +200,6 @@ function resetdaysMore(){
     return buttonCounter;
   }
 }
-
-/*previousButton.addEventListener("click", function(){
- var i = resetdaysLess();
-  console.log("pressed previousButton... buttonCount: " + i);
-  dOfWeek.innerHTML = newYesterdayAlphaDay(buttonCounter) ;
-});
-
-nextButton.addEventListener("click", function(){
-  var i = resetdaysMore();
-  console.log("pressed nextButton... buttonCount or i: " + i );
-  dOfWeek.innerHTML = newTomorrowAlphaDay(buttonCounter) ;
-});*/
 
 function newYesterdayAlphaDay(counter){
   var date = new Date();
@@ -201,30 +211,6 @@ function newTomorrowAlphaDay(counter){
   date.setDate(date.getDate() + counter);
   return days2[date.getDay()];
 }
-
-
-
-
-//Starting display
-
-var dOfWeek = document.getElementById("dayOfWeek");
-//var month = document.getElementById("monthText");
-dOfWeek.innerHTML = getTodayAlphaDay() ;
-var dOfMonth = document.getElementById("numberOfMonth");
-//month.innerHTML = getMonthText()
-dOfMonth.innerHTML = "<b>" + getTodayNumberText() + "</b>"  + " " + getTodayNumber() + " " + getTodayCurrentYear();
-
-
-
-
-
-
-
-
-
-var createDate = new Date();
-var todaysDateDay = createDate.getDate();
-console.log("Date today: " + todaysDateDay);
 
 function Task1(){
   this.taskName = "Max Soccer Practise";
@@ -311,8 +297,6 @@ var Task2 = {
 
   },
 };
-//console.log(Task2.getStartDate());
-
 function Task3(){
   this.taskName = "Dentist Appointment";
   this.taskID = "832700";
@@ -379,35 +363,11 @@ function createNewChild() {
     alert(this.firstName + " " + this.lastName);
 }
 
-var newTask3 = new Task3();
-console.log(newTask3.taskID + "\n" + newTask3.getStartDate() + "\n" + newTask3.getEndDate() );
-
-
-getFirstDayOfMonth(2019,04);
 function getFirstDayOfMonth(year, month){
     var date = new Date(year, month, 1);
     return days2[date.getDay()];
 }
 
-//get day of month
-function getTodayNumber(){
-  var i = new Date();
-  return i.getDate();
-}
-
-//get month in text
-function getTodayNumberText(){
-  var i = new Date();
-  return months[i.getMonth()];
-}
-function getTodayAlphaDay(){
-  var day = new Date();
-  return days2[day.getDay()];
-}
-function getTodayCurrentYear(){
-  var year = new Date();
-  return year.getFullYear();
-}
 
 function getYesterdayAlphaDay(){
   var date = new Date();
@@ -419,11 +379,9 @@ function getYesterdayAlphaDay(){
 function getYesterdayMonth(){
   var d = new Date();
   d.setDate(d.getDate() - 1); //Set the date to be yesterdays date
-  //console.log(d);
   //var curr_date = d.getDate();
   var month = d.getMonth() ;
   return months[month];
-//console.log(curr_month);
 //var curr_year = d.getFullYear();
 }
 
@@ -442,12 +400,9 @@ function getYesterdayYear(){
 function getTomorrowMonth(){
   var d = new Date();
   d.setDate(d.getDate() + 1); //Set the date to be yesterdays date
-  //console.log(d);
   //var curr_date = d.getDate();
   var month = d.getMonth() ;
   return months[month];
-//console.log(curr_month);
-//var curr_year = d.getFullYear();
 }
 function getTomorrowAlphaDay(){
   var date = new Date();
