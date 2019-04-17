@@ -107,7 +107,7 @@ function printSelectedTasks(){
       numberOfTasks++;
     }
   }
-  displayNumTasks.innerHTML = "Number of tasks for today: " + numberOfTasks + "</br></br> Click on any task to find out more information" ;
+  displayNumTasks.innerHTML = "You have: " + numberOfTasks + " tasks to be completed for today." +"</br></br> Click on any task button to find out more information about the task." ;
 
 }
 
