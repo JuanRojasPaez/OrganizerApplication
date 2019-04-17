@@ -1,3 +1,7 @@
+//To inform that you will only see the schedule which is made for todays date.
+alert("You will only see your task if it is created on today's date");
+
+
 var newTaskName;
 var newTaskDesc;
 var newTaskLocation;
@@ -27,7 +31,7 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 //Array containing test objects. Change 2nd task 'taskStartingDay' to another number to display empty message
 var tasksCreated = [
   {id: 0, taskName: 'Mike piano lessons', taskDescription: 'Piano lessons for Mike at 3:30pm', taskLocation: 'Piano School', taskAllDay: false, taskStartingYear: 2019, taskStartingMonth: 03, taskStartingDay: 13, taskCompleted: false,colorPicked: '#00dfb8'},
-  {id:1, taskName: 'Lucy soccer practise', taskDescription: "Lucy has soccer practise at 1pm", taskLocation: '123 Sample Street Road', taskAllDay: true, taskStartingYear: 2019, taskStartingMonth: todayMonth, taskStartingDay: todayDay, taskCompleted: false,colorPicked: '#FCCC3A' },
+  {id:1, taskName: 'Lucy soccer practise', taskDescription: "Lucy has soccer practise at 1pm", taskLocation: '123 Sample Street Road', taskAllDay: true, taskStartingYear: 2019, taskStartingMonth: todayMonth, taskStartingDay: todayDay, taskCompleted: false,colorPicked: '#4E6ECF' },
 ];
 
 printSelectedTasks();
@@ -103,7 +107,7 @@ function printSelectedTasks(){
       numberOfTasks++;
     }
   }
-  displayNumTasks.innerHTML = "Number of tasks for today: " + numberOfTasks + "</br></br> Click on any task to find out more information" ;
+  displayNumTasks.innerHTML = "You have: " + numberOfTasks + " tasks to be completed for today." +"</br></br> Click on any task button to find out more information about the task." ;
 
 }
 

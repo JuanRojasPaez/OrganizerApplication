@@ -2,6 +2,9 @@ body{
   background-color:#23529E !important;
 }
 
+.createNewTaskStyle{
+  background-color:#23529E
+}
 label{
   color:white;
 }
@@ -37,7 +40,7 @@ fieldset{
 }
 
 .borderCalendar{
-  border-color: #FB7D79;
+  border-color: #ED3C12;
   border-style: solid;
   border-width: 5px;
   background-color: white;
@@ -63,7 +66,7 @@ fieldset{
   color:white;
 }
 .dateToday{
-  background-color: #FB7D79;
+  background-color: #ED3C12;
   color:white;
 }
 .dateTomorrow{
